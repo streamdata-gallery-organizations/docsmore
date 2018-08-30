@@ -3,10 +3,8 @@ swagger: "2.0"
 x-collection-name: Docsmore
 x-complete: 0
 info:
-  title: Docsmore List all Webhooks
-  description: List Webhooks that are both active and inactive. Inactive webhooks
-    with webhook type of 'static' will be automatically removed during the nightly
-    job process.
+  title: Docsmore Get Details of Single Webhook
+  description: Details of Single Webhook.
   version: "1.0"
 host: api.docsmore.com
 basePath: /
@@ -35,6 +33,25 @@ paths:
       - List
       - ""
       - Webhooks
+  /api/getwebhooks/{id}:
+    get:
+      summary: Get Details of Single Webhook
+      description: Details of Single Webhook.
+      operationId: ApiGetwebhooksByIdGet
+      x-api-path-slug: apigetwebhooksid-get
+      parameters:
+      - in: header
+        name: Content-Type
+      - in: path
+        name: id
+      responses:
+        200:
+          description: OK
+      tags:
+      - Details
+      - Of
+      - Single
+      - Webhook
 x-streamrank:
   polling_total_time_average: 0
   polling_size_download_average: 0

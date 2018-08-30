@@ -3,10 +3,21 @@ swagger: "2.0"
 x-collection-name: Docsmore
 x-complete: 0
 info:
-  title: Docsmore Unsubscribe Webhook
-  description: It is important that you call this event to unsubscribe otherwise it
-    will automatically be removed in 10 minutes. If not unsubscribed manually, it
-    can also lead to the problem of duplication and create further issues.
+  title: Docsmore Subscribe To Webhook
+  description: |-
+    Make sure you have a unique payload URL every time you use this api call to register your webhook. Unable to do so will result in webhook registration denial.
+
+
+    For multiple events subscription, just use it comma separated values. Here are the available list of register events.
+
+
+
+    documentUploadComplete
+    workflowProgressEvent
+    workflowCompleteEvent
+    documentflowProgressEvent
+    documentflowCompleteEvent
+    documentSelfSigninCompleteEvent
   version: "1.0"
 host: api.docsmore.com
 basePath: /
@@ -85,25 +96,6 @@ paths:
           description: OK
       tags:
       - Subscribe
-      - Webhook
-  /api/webhook/unsubscribe/{id}:
-    delete:
-      summary: Unsubscribe Webhook
-      description: It is important that you call this event to unsubscribe otherwise
-        it will automatically be removed in 10 minutes. If not unsubscribed manually,
-        it can also lead to the problem of duplication and create further issues.
-      operationId: ApiWebhookUnsubscribeByIdDelete
-      x-api-path-slug: apiwebhookunsubscribeid-delete
-      parameters:
-      - in: header
-        name: Content-Type
-      - in: path
-        name: id
-      responses:
-        200:
-          description: OK
-      tags:
-      - Unsubscribe
       - Webhook
 x-streamrank:
   polling_total_time_average: 0

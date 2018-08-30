@@ -3,8 +3,14 @@ swagger: "2.0"
 x-collection-name: Docsmore
 x-complete: 0
 info:
-  title: Docsmore Get All Document Flows
-  description: Get all document flows.
+  title: Docsmore Get OAuth TOKEN
+  description: |-
+    Obtaining an Auth Token is the first thing in the process. The lifetime of Auth token is configurable in the developer portal depending upon your need. Once auth token is obtained, all the follow up API calls will need to include auth token in the header. FaIlure to do so would result in response with 401 Unauthorized Access.
+
+    Under Your Developer Account - Go to Api Setting and you will screen similar to below.
+
+
+    Make sure you call this in server side code. Exposing apiKey and clientSecret is a not a good idea on front end and can lead up to security vulnerabilities.
   version: "1.0"
 host: api.docsmore.com
 basePath: /
@@ -130,71 +136,6 @@ paths:
       tags:
       - OAuth
       - TOKEN
-  /api/dmcatalogue:
-    post:
-      summary: Fetch All Documents from Your Team Catalogue
-      description: By design, the authenticated user can only view the files that
-        are either created by them or shared with them. Make sure user has at least
-        read permission to view the catalogue.
-      operationId: ApiDmcataloguePost
-      x-api-path-slug: apidmcatalogue-post
-      parameters:
-      - in: header
-        name: Accept
-      - in: header
-        name: Content-Type
-      - in: query
-        name: items
-      - in: query
-        name: page
-      responses:
-        200:
-          description: OK
-      tags:
-      - Fetch
-      - ""
-      - Documents
-      - From
-      - Your
-      - Team
-      - Catalogue
-  /api/dmcatalogue/:id:
-    post:
-      summary: Fetch Single Document
-      description: Fetch single document.
-      operationId: ApiDmcatalogueIdPost
-      x-api-path-slug: apidmcatalogueid-post
-      parameters:
-      - in: header
-        name: Accept
-      - in: header
-        name: Content-Type
-      - in: query
-        name: id
-      responses:
-        200:
-          description: OK
-      tags:
-      - Fetch
-      - Single
-      - Document
-  /api/docflow/getdocflows:
-    get:
-      summary: Get All Document Flows
-      description: Get all document flows.
-      operationId: ApiDocflowGetdocflowsGet
-      x-api-path-slug: apidocflowgetdocflows-get
-      parameters:
-      - in: header
-        name: Accept
-      - in: header
-        name: Content-Type
-      responses:
-        200:
-          description: OK
-      tags:
-      - Document
-      - Flows
 x-streamrank:
   polling_total_time_average: 0
   polling_size_download_average: 0

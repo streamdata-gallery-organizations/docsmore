@@ -3,8 +3,11 @@ swagger: "2.0"
 x-collection-name: Docsmore
 x-complete: 0
 info:
-  title: Docsmore Get All Document Flows
-  description: Get all document flows.
+  title: Docsmore Get Workflow Link
+  description: |-
+    This is the most popular use of Docsmore API. From your connected app, you can launch workflow and obtain the unique link for immediate launch or later on. You can also supply data in flat json format that can be used inside the document for pre-fill purpose saving your customer time.
+
+    Please make sure you pay close attention to the requirement for this API call as there are several aspects of it as required parameters.
   version: "1.0"
 host: api.docsmore.com
 basePath: /
@@ -195,6 +198,58 @@ paths:
       tags:
       - Document
       - Flows
+  /api/clientdocs/getrawdata/:authToken/:documentKey:
+    get:
+      summary: Get Raw Data For A Given Document
+      description: |-
+        This API call gets you underlying raw data of the document. All you need to do is supply Auth token and Document Key as part of the call.
+
+        Document Key can be obtained from "Document Gallery" Page and Clicking on the sub-menu of the desired document.
+
+        As a response object, jsondata and metadata information is passed. Jsondata is basically raw data and metadata is data columns information.
+      operationId: ApiClientdocsGetrawdataAuthTokenDocumentKeyGet
+      x-api-path-slug: apiclientdocsgetrawdataauthtokendocumentkey-get
+      parameters:
+      - in: header
+        name: Accept
+      - in: query
+        name: authToken
+      - in: header
+        name: Content-Type
+      - in: query
+        name: documentKey
+      responses:
+        200:
+          description: OK
+      tags:
+      - Raw
+      - Data
+      - Given
+      - Document
+  /api/getworkflowlink:
+    post:
+      summary: Get Workflow Link
+      description: |-
+        This is the most popular use of Docsmore API. From your connected app, you can launch workflow and obtain the unique link for immediate launch or later on. You can also supply data in flat json format that can be used inside the document for pre-fill purpose saving your customer time.
+
+        Please make sure you pay close attention to the requirement for this API call as there are several aspects of it as required parameters.
+      operationId: ApiGetworkflowlinkPost
+      x-api-path-slug: apigetworkflowlink-post
+      parameters:
+      - in: header
+        name: Accept
+      - in: body
+        name: Body
+        schema:
+          $ref: '#/definitions/holder'
+      - in: header
+        name: Content-Type
+      responses:
+        200:
+          description: OK
+      tags:
+      - Workflow
+      - Link
 x-streamrank:
   polling_total_time_average: 0
   polling_size_download_average: 0

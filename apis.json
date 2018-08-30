@@ -1,0 +1,33 @@
+{
+	"name": "Streadata.io API Gallery - Docsmore",
+	"description": "This is a repository of docsmore APIs, self-contained as a Github repository, with HTML and YAML representations of the APIs and their surrounding operations.",
+	"image": "http://template.streamdata.gallery/assets/docsmore.png",
+	"created": "2018-02-24",
+	"modified": "2018-08-30",
+	"url": "http://docsmore.streamdata.gallery/apis.json",
+	"specificationVersion": "0.14",
+	"apis": [
+		{
+			"name": "Docsmore",
+			"x-api-slug": "docsmore",
+			"description": "FORM.FILL.SIGN - With Docsmore, the process of setting up a form and sending to users to complete or sign is simplified.  Use our platform to easily upload a document, specify form fields/signage, and send to users for completion.  Present forms to you...",
+			"image": "http://kinlane-productions.s3.amazonaws.com/screen-capture-api/28946-api-docsmore-com.jpg",
+			"humanURL": "http://api.docsmore.com",
+			"baseURL": "https://api.docsmore.com//",
+			"tags": "Docsmore",
+			"properties": [
+				{
+					"type": "x-openapi-spec",
+					"url": "https://raw.githubusercontent.com/streamdata-gallery-organizations/docsmore/master/_listings/docsmore/openapi.md"
+				}
+			]
+		}
+	],
+	"tags": "Docsmore",
+	"include": [
+		{
+			"name": "Docsmore",
+			"url": "https://raw.githubusercontent.com/streamdata-gallery-organizations/docsmore/master/_listings/docsmore/apis.yaml"
+		}
+	]
+}

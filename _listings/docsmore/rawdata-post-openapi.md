@@ -3,8 +3,9 @@ swagger: "2.0"
 x-collection-name: Docsmore
 x-complete: 0
 info:
-  title: Docsmore Get All Document Flows
-  description: Get all document flows.
+  title: Docsmore Returns raw data response as json FOR SINGLE CLIENT DOC
+  description: This API call gets you underlying raw data of the document. All you
+    need to do is supply Auth token and Document Key as part of the call
   version: "1.0"
 host: api.docsmore.com
 basePath: /
@@ -195,6 +196,116 @@ paths:
       tags:
       - Document
       - Flows
+  /api/clientdocs/getrawdata/:authToken/:documentKey:
+    get:
+      summary: Get Raw Data For A Given Document
+      description: |-
+        This API call gets you underlying raw data of the document. All you need to do is supply Auth token and Document Key as part of the call.
+
+        Document Key can be obtained from "Document Gallery" Page and Clicking on the sub-menu of the desired document.
+
+        As a response object, jsondata and metadata information is passed. Jsondata is basically raw data and metadata is data columns information.
+      operationId: ApiClientdocsGetrawdataAuthTokenDocumentKeyGet
+      x-api-path-slug: apiclientdocsgetrawdataauthtokendocumentkey-get
+      parameters:
+      - in: header
+        name: Accept
+      - in: query
+        name: authToken
+      - in: header
+        name: Content-Type
+      - in: query
+        name: documentKey
+      responses:
+        200:
+          description: OK
+      tags:
+      - Raw
+      - Data
+      - Given
+      - Document
+  /api/getworkflowlink:
+    post:
+      summary: Get Workflow Link
+      description: |-
+        This is the most popular use of Docsmore API. From your connected app, you can launch workflow and obtain the unique link for immediate launch or later on. You can also supply data in flat json format that can be used inside the document for pre-fill purpose saving your customer time.
+
+        Please make sure you pay close attention to the requirement for this API call as there are several aspects of it as required parameters.
+      operationId: ApiGetworkflowlinkPost
+      x-api-path-slug: apigetworkflowlink-post
+      parameters:
+      - in: header
+        name: Accept
+      - in: body
+        name: Body
+        schema:
+          $ref: '#/definitions/holder'
+      - in: header
+        name: Content-Type
+      responses:
+        200:
+          description: OK
+      tags:
+      - Workflow
+      - Link
+  /api/docflowtracks/flowtrackviaapi:
+    post:
+      summary: Get Workflow Link For Flow Track
+      description: |-
+        In Docsmore space, Flow Track means all the client documents generated using one of the Document Flow. In other words, it is an instance of Document FLow. The other thing to notice here is payload information is remarkably similar to general "Workflow" of a Single Document.
+
+        When you initiate this API call, you are basically setting up a new instance of Workflow and in turn getting workflow link of the starting document in the workflow.
+
+        If "flowtrackid" value is "new", then new flowtrack will be created. If flowtrackid has a value of actual flowtrackid then link will be provided to access read-only view of document flowtrack
+      operationId: ApiDocflowtracksFlowtrackviaapiPost
+      x-api-path-slug: apidocflowtracksflowtrackviaapi-post
+      parameters:
+      - in: header
+        name: Accept
+      - in: body
+        name: Body
+        schema:
+          $ref: '#/definitions/holder'
+      - in: header
+        name: Content-Type
+      responses:
+        200:
+          description: OK
+      tags:
+      - Workflow
+      - Link
+      - Flow
+      - Track
+  /rawdata:
+    post:
+      summary: Returns raw data response as json FOR SINGLE CLIENT DOC
+      description: This API call gets you underlying raw data of the document. All
+        you need to do is supply Auth token and Document Key as part of the call
+      operationId: RawdataPost
+      x-api-path-slug: rawdata-post
+      parameters:
+      - in: header
+        name: Accept
+      - in: body
+        name: Body
+        schema:
+          $ref: '#/definitions/holder'
+      - in: header
+        name: Content-Type
+      responses:
+        200:
+          description: OK
+      tags:
+      - Returns
+      - Raw
+      - Data
+      - Response
+      - As
+      - Json
+      - FOR
+      - SINGLE
+      - CLIENT
+      - DOC
 x-streamrank:
   polling_total_time_average: 0
   polling_size_download_average: 0
